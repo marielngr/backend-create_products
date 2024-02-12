@@ -14,7 +14,7 @@ export default async function handler(request, response) {
       const productData = request.body;
       await Product.create(productData);
 
-      response.status(201).json({ status: "New Fish created" });
+      response.status(201).json({ status: "Product created" });
     } catch (error) {
       console.log("POST/api/products/", error);
       response.status(400).json({ error: error.message });
