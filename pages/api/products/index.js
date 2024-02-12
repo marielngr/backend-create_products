@@ -11,8 +11,7 @@ export default async function handler(request, response) {
 
   if (request.method === "POST") {
     try {
-      const productData = request.body;
-      await Product.create(productData);
+      const newProduct = await Product.create(request.body);
 
       response.status(201).json({ status: "Product created" });
     } catch (error) {
