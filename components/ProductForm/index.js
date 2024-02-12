@@ -20,7 +20,7 @@ export default function ProductForm() {
     event.target.reset();
 
     if (response.ok) {
-      mutate();
+      mutate("/api/products");
     }
   }
 
