@@ -1,5 +1,6 @@
 import { StyledForm, StyledHeading, StyledLabel } from "./ProductForm.styled";
 import { StyledButton } from "../Button/Button.styled";
+import { mutate } from "swr";
 
 export default function ProductForm() {
   async function handleSubmit(event) {
@@ -7,6 +8,17 @@ export default function ProductForm() {
 
     const formData = new FormData(event.target);
     const productData = Object.fromEntries(formData);
+
+    const response = await fetch("/api/products", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(productData),
+    });
+    if (response.ok) {
+      mutate();
+    }
   }
 
   return (
